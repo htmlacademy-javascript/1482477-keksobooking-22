@@ -1,6 +1,4 @@
 import {activateForm, address} from './form.js';
-/*import {createAnnouncements} from './data.js';
-import {template} from './card.js';*/
 import {activateFilter} from './filter.js';
 
 /* global L:readonly */
@@ -55,17 +53,17 @@ mainPinMarker.on('moveend', (evt) => {
 
 /*Добавление вспомогательные метки*/
 
-/*const ponyPinIcon = L.icon({
+const ponyPinIcon = L.icon({
   iconUrl: './img/pin.svg',
   iconSize: [40, 40],
   iconAnchor: [20, 40],
 });
 
-createAnnouncements.forEach((announcement) => {
+const renderOnMap = ({lat, lng}, popup) => {
   const ponyPin = L.marker(
     {
-      lat: announcement.location.x,
-      lng: announcement.location.y,
+      lat,
+      lng,
     },
     {
       icon: ponyPinIcon ,
@@ -74,5 +72,7 @@ createAnnouncements.forEach((announcement) => {
 
   ponyPin
     .addTo(map)
-    .bindPopup(template(announcement));
-});*/
+    .bindPopup(popup);
+}
+
+export {renderOnMap};
